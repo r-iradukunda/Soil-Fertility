@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🌱 Soil Fertility Analyzer</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1><img src="assets/soil-icon.png" alt="Soil Icon"> Soil Fertility Analyzer</h1>
+      <p>Enter your soil parameters to predict fertility class</p>
+    </header>
+
+    <div class="dashboard">
+      <!-- Input Panel -->
+      <div class="input-panel card">
+        <h2>📊 Enter Soil Data</h2>
+        <div class="input-grid">
+          <div class="input-group">
+            <label>Nitrogen (N) <span class="unit">ppm</span>:</label>
+            <input type="number" id="n" min="6" max="383" value="138" placeholder="e.g., 138">
+            <input type="range" class="slider" min="6" max="383" value="138" oninput="updateNumberInput('n')">
+          </div>
+          <div class="input-group">
+            <label>Phosphorus (P) <span class="unit">ppm</span>:</label>
+            <input type="number" id="p" min="2.9" max="125" step="0.1" value="8.6" placeholder="e.g., 8.6">
+            <input type="range" class="slider" min="2.9" max="125" step="0.1" value="8.6" oninput="updateNumberInput('p')">
+          </div>
+        <div class="input-group">
+          <label>Potassium (K) <span class="unit">ppm</span>:</label>
+          <input type="number" id="k" min="11" max="887" value="560" placeholder="560">
+        </div>
+        <div class="input-group">
+          <label>pH:</label>
+          <input type="number" id="ph" min="0.9" max="11.15" step="0.01" value="7.46" placeholder="7.46">
+        </div>
+        <div class="input-group">
+          <label>EC <span class="unit">dS/m</span>:</label>
+          <input type="number" id="ec" min="0.1" max="0.95" step="0.01" value="0.62" placeholder="0.62">
+        </div>
+        <div class="input-group">
+          <label>Organic Carbon (OC) <span class="unit">%</span>:</label>
+          <input type="number" id="oc" min="0.1" max="24" step="0.1" value="0.7" placeholder="0.7">
+        </div>
+        <div class="input-group">
+          <label>Sulfur (S) <span class="unit">ppm</span>:</label>
+          <input type="number" id="s" min="0.64" max="31" step="0.1" value="5.9" placeholder="5.9">
+        </div>
+        <div class="input-group">
+          <label>Zinc (Zn) <span class="unit">ppm</span>:</label>
+          <input type="number" id="zn" min="0.07" max="42" step="0.01" value="0.24" placeholder="0.24">
+        </div>
+        <div class="input-group">
+          <label>Iron (Fe) <span class="unit">ppm</span>:</label>
+          <input type="number" id="fe" min="0.21" max="44" step="0.01" value="0.31" placeholder="0.31">
+        </div>
+        <div class="input-group">
+          <label>Copper (Cu) <span class="unit">ppm</span>:</label>
+          <input type="number" id="cu" min="0.09" max="3.02" step="0.01" value="0.77" placeholder="0.77">
+        </div>
+        <div class="input-group">
+          <label>Manganese (Mn) <span class="unit">ppm</span>:</label>
+          <input type="number" id="mn" min="0.11" max="31" step="0.01" value="8.71" placeholder="8.71">
+        </div>
+        <div class="input-group">
+          <label>Boron (B) <span class="unit">ppm</span>:</label>
+          <input type="number" id="b" min="0.06" max="2.82" step="0.01" value="0.11" placeholder="0.11">
+        </div>
+    </div>
+        <div class="button-group">
+          <button id="predict-btn" class="primary-btn">🌱 Predict Fertility</button>
+          <button id="reset-btn" class="secondary-btn">🔄 Reset</button>
+        </div>
+      </div>
+
+      <!-- Output Panel -->
+      <div class="output-panel card">
+        <h2>📈 Results</h2>
+        <div id="result-box" class="result-container">
+          <div class="result-header">
+            <span id="fertility-class" class="fertility-1">Fertile</span>
+            <span id="confidence" class="confidence-badge">85% Confidence</span>
+          </div>
+          <div id="suggestions" class="suggestions-box">
+            <p>💡 Suggestions: Add compost and reduce irrigation.</p>
+          </div>
+          <div class="plots-container">
+            <div id="parameter-plot" class="plot"></div>
+            <div id="feature-importance-plot" class="plot"></div>
+          </div>
+        </div>
+        <div id="placeholder" class="placeholder">
+          <p>👆 Click "Predict" to analyze your soil data</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Retrain Model Section -->
+    <div class="retrain-panel card">
+      <h2>🔄 Retrain Model</h2>
+      <div class="retrain-input">
+        <input type="file" id="dataset-upload" accept=".csv">
+        <button id="retrain-btn" class="primary-btn">🚀 Retrain with New Data</button>
+      </div>
+      <div id="retrain-status" class="status-box">
+      </div>
+  </div>
+
+  <script src="script.js"></script>
+<script src="js/retrain.js" type="module"></script>
+</body>
+</html>
