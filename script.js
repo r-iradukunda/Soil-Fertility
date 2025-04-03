@@ -1,6 +1,6 @@
 // API Configuration
-const PREDICT_API_URL = 'http://localhost:3000/api/predict';
-const RETRAIN_API_URL = 'http://localhost:3000/api/retrain';
+const PREDICT_API_URL = 'https://soil-fertility-ixi3.onrender.com/api/predict';
+const RETRAIN_API_URL = 'https://soil-fertility-ixi3.onrender.com/api/retrain';
 
 // Sync number inputs with sliders
 function updateNumberInput(id) {
