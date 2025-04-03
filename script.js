@@ -9,6 +9,15 @@ function updateNumberInput(id) {
   numberInput.value = slider.value;
 }
 
+async function loadSoilData() {
+  try {
+    const response = await fetch('soilData.json');
+    return await response.json();
+  } catch (error) {
+    console.error('Error loading soil data:', error);
+    return { samples: [], parameters: [] };
+  }
+}
 // Initialize sliders
 document.querySelectorAll('.slider').forEach(slider => {
   const id = slider.previousElementSibling.id;
