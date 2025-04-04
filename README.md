@@ -50,5 +50,5 @@ CSV files should contain these columns:
 - Version control for models
 - Performance monitoring tools
 
-link to video: https://youtu.be/mUXZ1L3esxA
+link to video: https://www.youtube.com/watch?v=R9IMSZG9riU
 link to website: https://r-iradukunda.github.io/Soil-Fertility/
