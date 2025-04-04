@@ -1,24 +1,54 @@
-# Soil Fertility Analysis
+# Soil Fertility Prediction System
 
-Machine learning model that classifies soil fertility based on 12 key parameters.
+## Overview
+A machine learning system that classifies soil fertility levels (Less Fertile, Fertile, Highly Fertile) based on 12 key soil parameters.
 
-## Features
+## Key Features
+- **Automated Classification**: Instant soil fertility predictions
+- **Probability Scoring**: Confidence levels for each prediction
+- **Continuous Learning**: Model improves with new data
+- **Multiple Integration Options**: API or direct Python import
 
-- **12-Parameter Analysis**: N, P, K, pH, EC, OC, S, Zn, Fe, Cu, Mn, B
-- **Classification**: 
-  - 0: Less Fertile 
-  - 1: Fertile
-  - 2: Highly Fertile
-- **Models**: Random Forest and Logistic Regression
-- **Data Processing**: Handles missing values, visualizes correlations
+## Technical Components
+### Data Processing
+- Handles missing values automatically
+- Normalizes features for optimal model performance
+- Corrects class imbalances in training data
 
-## Requirements
+### Machine Learning
+- Random Forest classifier (primary model)
+- Logistic Regression (baseline model)
+- Hyperparameter optimization
 
-- Python 3.7+
-- Libraries: pandas, numpy, scikit-learn, matplotlib, seaborn
+### Deployment
+- Pre-trained models included
+- Flask API for web services
+- Docker support available
 
-## Installation
+## Data Requirements
+CSV files should contain these columns:
+- N, P, K, pH, EC, OC, S, Zn, Fe, Cu, Mn, B (as features)
+- Output (0-2 fertility class as target)
 
-```bash
-pip install -r requirements.txt
-link to video: https://drive.google.com/drive/folders/1EIuMyod7PFLkcgcPR-PJmP_AVASPCKRc
+## Implementation Workflow
+1. **Initial Setup**: Install dependencies and load pretrained models
+2. **Predictions**: Classify new soil samples
+3. **Retraining**: Update models with new field data
+
+## Performance
+- Typical accuracy: 85-92%
+- Provides classification reports
+- Includes feature importance analysis
+
+## Applications
+- Precision agriculture
+- Soil health monitoring
+- Agricultural research
+
+## Maintenance
+- Regular model updates recommended
+- Version control for models
+- Performance monitoring tools
+
+link to video: https://youtu.be/mUXZ1L3esxA
+link to website: https://r-iradukunda.github.io/Soil-Fertility/
